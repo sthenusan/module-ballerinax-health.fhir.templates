@@ -23,6 +23,7 @@
 import ballerina/http;
 import ballerina/log;
 import ballerinax/health.fhir.r4;
+import ballerina/io;
 
 # Generic type to wrap all implemented profiles. 
 # Add required profile types here.
@@ -65,6 +66,7 @@ service / on new http:Listener(9090) {
             log:printError("Error in source connection processing");
         }
         log:printDebug("[END]FHIR interaction : search");
+        io:println(request.getHeaderNames());
         return {};
     }
     // Read the current state of a resource by id.
